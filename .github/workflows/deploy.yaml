@@ -1,0 +1,29 @@
+name: Deploy Streamlit App
+
+on:
+  push:
+    branches:
+      - main  # Change this to your main branch name
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Deploy Streamlit App
+        run: |
+          streamlit run app.py
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
