@@ -13,7 +13,7 @@ from openai import OpenAI
 # from dotenv import load_dotenv
 # load_dotenv()
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+openai_api_key = os.getenv("OPENAI_API_KEY")
 
 bot = Image.open('Images/muslim.png') 
 user = Image.open('Images/man.png')
@@ -30,7 +30,7 @@ prompt_template = PromptTemplate(
 st.set_page_config(page_title="Islamic chatbot", page_icon=":bird:")
 st.header("Haji Chatbot :bird:")
 
-llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613",openai_api_key=OPENAI_API_KEY)
+llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-16k-0613",openai_api_key=openai_api_key)
 
 chain = LLMChain(llm=llm, prompt=prompt_template)
 
